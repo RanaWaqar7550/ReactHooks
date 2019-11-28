@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const Test = () => {
-    return (
-        <div>Hello world</div>
-    )
-}
+import { AppRouters } from 'Containers/Router';
 
-ReactDOM.render(<Test />, document.getElementById('root'));
+ReactDOM.render(
+    <AppRouters/>,
+    document.getElementById('root')
+);

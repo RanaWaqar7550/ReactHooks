@@ -15,11 +15,14 @@ module.exports = ({
     devtool: 'inline-source-map',
     devServer: {
         contentBase: path.join(__dirname, './src'),
+        historyApiFallback: true,
         port: '8000'
     },
     resolve: {
         alias: {
-          Src: './'
+          Components: path.resolve(__dirname, 'src/Components'),
+          Containers: path.resolve(__dirname, 'src/Containers'),
+          Images: path.resolve(__dirname, 'public/images'),
         },
         extensions: ['.js', '.jsx'],
         modules: ['node_modules', 'src']
@@ -29,7 +32,8 @@ module.exports = ({
         new HtmlWebpackPlugin({
             title: 'My App',
             filename: 'index.html',
-            template: path.resolve(__dirname, 'public/index.html')
+            template: path.resolve(__dirname, 'public/index.html'),
+            favicon: 'public/favicon.png'
         }),
     ],
     module: {
@@ -40,6 +44,14 @@ module.exports = ({
                 use: [
                     'babel-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                exclude: /node_modules/,
+                loader: 'file-loader',
+                options: {
+                    name: '[contenthash].[ext]'
+                }
             }
         ]
     },
