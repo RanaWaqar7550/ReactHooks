@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { AppRouters } from 'Containers/Router';
+import 'sanitize.css';
+import { App } from 'Containers/App';
 
 ReactDOM.render(
-    <AppRouters/>,
+    <App/>,
     document.getElementById('root')
 );

@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = ({
     entry: {
-        mainApp: './src/app.js',
+        mainApp: './src/index.js',
         vendors: ['react', 'react-dom']
     },
     output: {
@@ -22,7 +22,9 @@ module.exports = ({
         alias: {
           Components: path.resolve(__dirname, 'src/Components'),
           Containers: path.resolve(__dirname, 'src/Containers'),
+          Pages: path.resolve(__dirname, 'src/Containers/Pages'),
           Images: path.resolve(__dirname, 'public/images'),
+          Utils: path.resolve(__dirname, 'src/Utils'),
         },
         extensions: ['.js', '.jsx'],
         modules: ['node_modules', 'src']
@@ -52,6 +54,13 @@ module.exports = ({
                 options: {
                     name: '[contenthash].[ext]'
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
             }
         ]
     },
