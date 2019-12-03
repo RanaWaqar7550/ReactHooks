@@ -41,42 +41,55 @@ const LoginWrapper = styled.div`
 `;
 
 export const Login = () => {
-    setPageTitle('Login');
+  setPageTitle('Login');
 
-    const [ email, setEmail ] = useState(null);
-    const [ password, setPassword ] = useState(null);
-    const [ showMessageBar, setShowMessageBar ] = useState(false);
-    const [ isLogin, setIsLogin ] = useState(false);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [showMessageBar, setShowMessageBar] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
 
-    const settingEmail = (ev) => {
-        const { value: inputEmailValue } = ev.target;
-        setEmail(inputEmailValue);
-    };
+  const settingEmail = (ev) => {
+    const { value: inputEmailValue } = ev.target;
+    setEmail(inputEmailValue);
+  };
 
-    const settingPassword = (ev) => {
-        const { value: inputPassValue } = ev.target;
-        setPassword(inputPassValue);
-    };
+  const settingPassword = (ev) => {
+    const { value: inputPassValue } = ev.target;
+    setPassword(inputPassValue);
+  };
 
-    const doLoginApp = (event) => {
-        event.preventDefault();
-        setShowMessageBar(true);
-        if(email === 'waqar' && password === '123'){
-            setIsLogin(true);
-        } else {
-            setIsLogin(false);
-        }
-    };
+  const closeMessageBar = () => setShowMessageBar(false);
 
-    return (
-        <LoginWrapper>
-            {showMessageBar ? (<MessageBar message={isLogin ? 'Login successfully' : 'Email or Password is incorrect'}/>)
-                : (<></>)}
-            <form onSubmit={doLoginApp}>
-                <Input type="text" placeholder="Email" onChange={settingEmail} />
-                <Input type="password" placeholder="Password" onChange={settingPassword} />
-                <Button title="LOGIN" onClick={doLoginApp}/>
-            </form>
-        </LoginWrapper>
-    );
+  const doLoginApp = (event) => {
+    event.preventDefault();
+    setShowMessageBar(true);
+    setTimeout(() => {
+      setShowMessageBar(false);
+    }, 2000);
+    if (email === 'waqar' && password === '123') {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+    }
+  };
+
+  return (
+    <LoginWrapper>
+      {
+                showMessageBar
+                  ? (
+                    <MessageBar
+                      closeButtonClickHandler={closeMessageBar}
+                      message={isLogin ? 'Login successfully' : 'Email or Password is incorrect'}
+                    />
+                  )
+                  : (<></>)
+      }
+      <form onSubmit={doLoginApp}>
+        <Input type="text" placeholder="Email" onChange={settingEmail} />
+        <Input type="password" placeholder="Password" onChange={settingPassword} />
+        <Button title="LOGIN" onClick={doLoginApp} />
+      </form>
+    </LoginWrapper>
+  );
 };

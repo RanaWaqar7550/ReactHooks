@@ -5,6 +5,6 @@ import 'sanitize.css';
 import { App } from 'Containers/App';
 
 ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
+  <App />,
+  document.getElementById('root'),
 );

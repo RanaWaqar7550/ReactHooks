@@ -13,10 +13,8 @@ const AppBackgroundWrapper = styled.div`
     background-size: cover;
 `;
 
-export const App = () => {
-    return (
-        <AppBackgroundWrapper>
-            <AppRouters/>
-        </AppBackgroundWrapper>
-    )
-}
+export const App = () => (
+  <AppBackgroundWrapper>
+    <AppRouters />
+  </AppBackgroundWrapper>
+);

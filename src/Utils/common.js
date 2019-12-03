@@ -1,3 +1,3 @@
-export const setPageTitle = pageTitle => {
-    document.title = pageTitle;
+export const setPageTitle = (pageTitle) => {
+  document.title = pageTitle;
 };

@@ -16,8 +16,6 @@ const InputWrapper = styled.input`
    }
 `;
 
-export const Input = (props) => {
-    return (
-        <InputWrapper type={props.type} placeholder={props.placeholder} onChange={props.onChange}/>
-    );
-};
+export const Input = ({ type, placeholder, onChange }) => (
+  <InputWrapper type={type} placeholder={placeholder} onChange={onChange} />
+);

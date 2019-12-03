@@ -11,10 +11,8 @@ const ButtonWrapper = styled.button`
     color: black;
 `;
 
-export const Button = (props) => {
-    return (
-        <ButtonWrapper onClick={props.onClick}>
-            {props.title || 'BUTTON'}
-        </ButtonWrapper>
-    );
-};
+export const Button = ({ onClick, title }) => (
+  <ButtonWrapper onClick={onClick}>
+    {title || 'BUTTON'}
+  </ButtonWrapper>
+);
