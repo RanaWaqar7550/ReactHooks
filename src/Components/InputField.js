@@ -14,13 +14,10 @@ const InputWrapper = styled.input`
      outline: none;
    
    }
-   
-   
-
 `;
 
 export const Input = (props) => {
     return (
-        <InputWrapper type={props.type} placeholder={props.placeholder}/>
+        <InputWrapper type={props.type} placeholder={props.placeholder} onChange={props.onChange}/>
     );
 };

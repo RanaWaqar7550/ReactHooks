@@ -6,14 +6,14 @@ const ButtonWrapper = styled.button`
     top: 20px;
     border-radius: 10px;
     width: 100%;
-    background: blue;
+    background: #b2b2d2;
     padding: 12px;
     color: black;
 `;
 
 export const Button = (props) => {
     return (
-        <ButtonWrapper>
+        <ButtonWrapper onClick={props.onClick}>
             {props.title || 'BUTTON'}
         </ButtonWrapper>
     );
