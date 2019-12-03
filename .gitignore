@@ -1,5 +1,9 @@
 # build folders
 /build
+/client/build
+/server/build
 .idea
 /node_modules
+/client/node_modules
+/server/node_modules
 yarn-error.log

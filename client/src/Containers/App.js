@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import AppBackgroundImage from 'Images/app-background.svg';
-import { AppRouters } from './Router';
+import { AppRouters } from 'Router';
 
 const AppBackgroundWrapper = styled.div`
     background: url(${AppBackgroundImage});

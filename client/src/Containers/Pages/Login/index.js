@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { Input } from 'Components/InputField';
@@ -41,12 +41,14 @@ const LoginWrapper = styled.div`
 `;
 
 export const Login = () => {
-  setPageTitle('Login');
-
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [showMessageBar, setShowMessageBar] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    setPageTitle('Login');
+  });
 
   const settingEmail = (ev) => {
     const { value: inputEmailValue } = ev.target;

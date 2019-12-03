@@ -7,7 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import { Login } from './Pages/Login';
+import { Login } from 'Containers/Pages/Login/index';
 
 
 export const AppRouters = () => (
