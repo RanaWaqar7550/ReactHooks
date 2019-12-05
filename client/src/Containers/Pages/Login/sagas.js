@@ -2,6 +2,7 @@ import { takeEvery, put, select } from 'redux-saga/effects';
 
 import {
   USER_AUTHENTICATION_REQUEST,
+  SERVER_URL,
 } from 'Utils/Constants';
 import { userAuthenticationSuccess, userAuthenticationFailed } from 'Pages/Login/actions';
 import { requestAPI } from 'Utils/Requests';
@@ -13,7 +14,7 @@ function getLoginRequestPayload({ login }) {
 function* loginUser() {
   try {
     const payload = yield select(getLoginRequestPayload);
-    const response = yield requestAPI('http://localhost:3000/auth/login', {
+    const response = yield requestAPI(`${SERVER_URL}auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const DotEnv = require('dotenv-webpack');
 
 module.exports = ({
   entry: {
@@ -33,6 +34,10 @@ module.exports = ({
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new DotEnv({
+      path: path.resolve(__dirname, './.env'),
+      safe: true,
+    }),
     new HtmlWebpackPlugin({
       title: 'My App',
       filename: 'index.html',
