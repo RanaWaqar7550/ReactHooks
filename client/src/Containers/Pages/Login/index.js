@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { Input } from 'Components/InputField';
 import { Button } from 'Components/Button';
 import { MessageBar } from 'Components/MessageBar';
+import { userAuthentication } from 'Pages/Login/actions';
 import { setPageTitle } from 'Utils/common';
 
 const LoginWrapper = styled.div`
@@ -40,11 +42,11 @@ const LoginWrapper = styled.div`
     }
 `;
 
-export const Login = () => {
+const LoginPage = (props) => {
+  const { error, message, loading } = props;
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [showMessageBar, setShowMessageBar] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
     setPageTitle('Login');
@@ -60,19 +62,14 @@ export const Login = () => {
     setPassword(inputPassValue);
   };
 
-  const closeMessageBar = () => setShowMessageBar(false);
+  const closeMessageBar = () => {
+    setShowMessageBar(false);
+  };
 
   const doLoginApp = (event) => {
     event.preventDefault();
+    props.userloginAuthentication({ email, password });
     setShowMessageBar(true);
-    setTimeout(() => {
-      setShowMessageBar(false);
-    }, 2000);
-    if (email === 'waqar' && password === '123') {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
   };
 
   return (
@@ -82,7 +79,7 @@ export const Login = () => {
                   ? (
                     <MessageBar
                       closeButtonClickHandler={closeMessageBar}
-                      message={isLogin ? 'Login successfully' : 'Email or Password is incorrect'}
+                      message={!error ? 'Login successfully' : message}
                     />
                   )
                   : (<></>)
@@ -90,8 +87,21 @@ export const Login = () => {
       <form onSubmit={doLoginApp}>
         <Input type="text" placeholder="Email" onChange={settingEmail} />
         <Input type="password" placeholder="Password" onChange={settingPassword} />
-        <Button title="LOGIN" onClick={doLoginApp} />
+        <Button title={loading ? 'LOADING ...' : 'LOGIN'} onClick={doLoginApp} />
       </form>
     </LoginWrapper>
   );
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  userloginAuthentication: (payload) => dispatch(userAuthentication(payload)),
+});
+
+const mapStateToProps = ({ login }) => ({
+  error: login.error,
+  data: login.data,
+  message: login.message,
+  loading: login.loading,
+});
+
+export const Login = connect(mapStateToProps, mapDispatchToProps)(LoginPage);

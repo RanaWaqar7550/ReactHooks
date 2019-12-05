@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 
 import 'sanitize.css';
 import { App } from 'Containers/App';
-import { store } from 'Stores';
+import { configureStore } from 'Stores';
 
+const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <App />

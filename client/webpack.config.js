@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = ({
   entry: {
     mainApp: './src/index.js',
-    vendors: ['react', 'react-dom'],
+    vendors: ['react', 'react-dom', 'whatwg-fetch'],
   },
   output: {
     path: path.resolve(__dirname, 'build'),

@@ -20,7 +20,7 @@ export const getUsers = () => new Promise((resolve, reject) => {
 
 export const userLoginAuthentication = (data) => new Promise((resolve, reject) => {
   getCollections().usersCollection.find(data).toArray((err, result) => {
-    if (err || !result) {
+    if (err || (result && !result.length)) {
       return reject(err || 'Email or password is incorrect.');
     }
     return resolve(result);

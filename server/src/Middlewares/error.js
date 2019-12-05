@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-export const errorMiddleware = (err, req, res, next) => {
+export const errorMiddleware = (error, req, res, next) => {
+  const { err, statusCode } = error;
   const errorResult = {
     error: true,
     message: '',
@@ -10,5 +11,5 @@ export const errorMiddleware = (err, req, res, next) => {
   } else {
     errorResult.message = err;
   }
-  return res.status(401).json(errorResult);
+  return res.status(statusCode).json(errorResult);
 };

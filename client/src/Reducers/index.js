@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux';
 
-export const rootReducer = combineReducers();
+import { LoginReducer } from 'Pages/Login/reducer';
+
+export const rootReducer = combineReducers({ login: LoginReducer });
