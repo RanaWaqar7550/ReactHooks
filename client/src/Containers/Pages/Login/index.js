@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
 import { Input } from 'Components/InputField';
 import { Button } from 'Components/Button';
 import { MessageBar } from 'Components/MessageBar';
 import { userAuthentication } from 'Pages/Login/actions';
+// import { Chat } from 'Pages/Chat/index';
 import { setPageTitle } from 'Utils/common';
+
 
 const LoginWrapper = styled.div`
     background: #4e3939;
@@ -43,11 +46,14 @@ const LoginWrapper = styled.div`
 `;
 
 const LoginPage = (props) => {
-  const { error, message, loading } = props;
+  const {
+    error, message, loading, userData, loginToken,
+  } = props;
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [showMessageBar, setShowMessageBar] = useState(false);
 
+  const authToken = localStorage.getItem('authToken');
   useEffect(() => {
     setPageTitle('Login');
   });
@@ -71,6 +77,16 @@ const LoginPage = (props) => {
     props.userloginAuthentication({ email, password });
     setShowMessageBar(true);
   };
+
+  if (!error && (loginToken || authToken)) {
+    return (
+      <Redirect to={{
+        pathname: '/chat',
+        state: userData,
+      }}
+      />
+    );
+  }
 
   return (
     <LoginWrapper>
@@ -99,9 +115,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = ({ login }) => ({
   error: login.error,
-  data: login.data,
+  userData: login.data,
   message: login.message,
   loading: login.loading,
+  loginToken: login.loginToken,
 });
 
 export const Login = connect(mapStateToProps, mapDispatchToProps)(LoginPage);

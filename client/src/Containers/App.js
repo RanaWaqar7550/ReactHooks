@@ -11,6 +11,7 @@ const AppBackgroundWrapper = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: auto;
 `;
 
 export const App = () => (

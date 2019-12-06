@@ -6,6 +6,7 @@ import { rootReducer } from 'Reducers';
 import { rootLoginSaga } from 'Pages/Login/sagas';
 
 const saga = createSagaMiddleware();
+
 export const configureStore = () => {
   const store = createStore(
     rootReducer,

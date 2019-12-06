@@ -19,7 +19,7 @@ module.exports = {
       Controllers$: path.resolve(__dirname, 'src/Controllers/index.js'),
       Models$: path.resolve(__dirname, 'src/Models/index.js'),
       Middlewares$: path.resolve(__dirname, 'src/Middlewares/index.js'),
-      Utils$: path.resolve(__dirname, 'src/Utils/index.js'),
+      Utils: path.resolve(__dirname, 'src/Utils'),
     },
   },
   node: {
