@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { Button } from 'Components/Button';
+import { userLogOut } from 'Containers/Pages/Login/actions';
 import { setPageTitle } from 'Utils/common';
 
 const HeaderWrapper = styled.div`
@@ -21,30 +23,30 @@ const HeaderWrapper = styled.div`
 `;
 const user = JSON.parse(localStorage.getItem('user'));
 
-const Header = ({ children, location }) => {
+const CommonHeader = ({ children, userLoginData, userDoLogout }) => {
   const [userLogout, setUserLogout] = useState(false);
 
   const handleLogOut = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('user');
+    userDoLogout();
     setUserLogout(true);
   };
 
   useEffect(() => setPageTitle('Chat'));
 
   if (userLogout) {
-    return (
-      <Redirect to={{
-        pathname: '/login',
-      }}
-      />
-    );
+    return (<Redirect to="/login" />);
   }
+
+  const userData = userLoginData || user;
+  const { username = '' } = userData || {};
+
   return (
     <HeaderWrapper>
       <h1>
 Welcome
-        {` ${location && location.state ? location.state.username : user.username}`}
+        {` ${username}`}
       </h1>
       {children}
       <Button title="Logout" onClick={handleLogOut} />
@@ -52,4 +54,12 @@ Welcome
   );
 };
 
-export { Header };
+const mapStateToProps = ({ login }) => ({
+  userLoginData: login.data,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  userDoLogout: () => dispatch(userLogOut()),
+});
+
+export const Header = connect(mapStateToProps, mapDispatchToProps)(CommonHeader);

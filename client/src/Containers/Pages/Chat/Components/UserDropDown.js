@@ -14,6 +14,11 @@ const DropDownWrapper = styled.div`
         color: white;
         text-align: center;
     }
+    & span:hover {
+      background: white;
+      color: black;
+      cursor: pointer;
+    }
 `;
 
 export const UserDropDown = ({ userList }) => (

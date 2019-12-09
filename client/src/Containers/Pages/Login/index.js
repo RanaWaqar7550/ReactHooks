@@ -47,7 +47,7 @@ const LoginWrapper = styled.div`
 
 const LoginPage = (props) => {
   const {
-    error, message, loading, userData, loginToken,
+    error, message, loading, loginToken,
   } = props;
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
@@ -77,14 +77,9 @@ const LoginPage = (props) => {
     props.userloginAuthentication({ email, password });
     setShowMessageBar(true);
   };
-
   if (!error && (loginToken || authToken)) {
     return (
-      <Redirect to={{
-        pathname: '/chat',
-        state: userData,
-      }}
-      />
+      <Redirect to="/chat" />
     );
   }
 

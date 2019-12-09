@@ -2,6 +2,7 @@ import {
   USER_AUTHENTICATION_REQUEST,
   USER_AUTHENTICATION_SUCCESS,
   USER_AUTHENTICATION_FAILED,
+  USER_LOGOUT,
 } from 'Utils/Constants';
 
 const initialState = {
@@ -31,6 +32,8 @@ export const LoginReducer = (state = initialState, action) => {
       return {
         ...state, error: true, message: action.error.message, loading: false,
       };
+    case USER_LOGOUT:
+      return { ...initialState };
     default:
       return { ...state };
   }
