@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/', rootRouter);
 app.use(errorMiddleware);
-
+console.log('working');
 connectDatabase();
 // eslint-disable-next-line no-console
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
