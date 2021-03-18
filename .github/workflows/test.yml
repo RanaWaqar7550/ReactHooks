@@ -1,7 +1,10 @@
 # name of the workflow
 name: super linter
 # Define Event
-on: push
+on: 
+  push:
+    branches:
+      - master
 # Define Job 
 jobs: 
   linter:
