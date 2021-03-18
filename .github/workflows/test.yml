@@ -3,11 +3,12 @@ name: super linter
 # Define Event
 on: push
 # Define Job 
-job: 
+jobs: 
   linter:
-    - name: Run linter on this workflow
-    - uses: action/checkout@v2
+    runs-on: ubuntu-latest
 # Steps
   steps: 
-      - name: running linter 
-      - run: npm run lint
+    - name: Run linter on this workflow
+    - uses: action/checkout@v2
+    - name: running linter 
+    - run: npm run lint
