@@ -26,6 +26,7 @@ jobs:
       run: npm run install-packages
 
   linter:
+    needs: packages-install
     runs-on: ubuntu-18.04
     steps: 
     - name: checkout action branch
