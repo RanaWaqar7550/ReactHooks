@@ -16,6 +16,8 @@ jobs:
   packages-install: 
     run-on: ubuntu-18.04
     steps:
+    - name: checkout action branch
+      uses: actions/checkout@v2
     - name: checkout NodeJS repository
       uses: actions/setup-node@v1
       with: 
@@ -28,6 +30,5 @@ jobs:
     steps: 
     - name: checkout action branch
       uses: actions/checkout@v2
-    - name: install client server packages
     - name: run linter
       run: npm run lint
