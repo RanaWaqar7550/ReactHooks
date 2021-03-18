@@ -16,7 +16,7 @@ jobs:
   packages-install: 
     run-on: ubuntu-18.04
     steps:
-      - name: checkout NodeJS repository
+    - name: checkout NodeJS repository
       uses: actions/setup-node@v1
       with: 
         node-version: '12.x'
