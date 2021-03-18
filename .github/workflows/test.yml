@@ -14,7 +14,7 @@ on:
 # Define Job 
 jobs: 
   packages-install: 
-    run-on: ubuntu-18.04
+    runs-on: ubuntu-18.04
     steps:
     - name: checkout action branch
       uses: actions/checkout@v2
