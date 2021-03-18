@@ -36,5 +36,5 @@ jobs:
       with: 
         node-version: '12.x'
     - name: run linter
-      if: {{ github.event_name != 'push' }}
+      if: ${{ github.event_name != 'push' }}
       run: npm run lint
