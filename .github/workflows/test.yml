@@ -29,5 +29,9 @@ jobs:
     needs: packages-install
     runs-on: ubuntu-18.04
     steps: 
+    - name: checkout NodeJS repository
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
     - name: run linter
       run: npm run lint
