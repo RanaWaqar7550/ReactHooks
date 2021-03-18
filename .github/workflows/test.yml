@@ -1,0 +1,43 @@
+# name of the workflow
+name: super linter
+# Define Event
+on:
+  push:
+    branches:
+      - master
+      - 'waqar/**'
+  pull_request:
+    branches: 
+      - master
+      - develop
+
+# Define Job 
+jobs: 
+  packages-install: 
+    runs-on: ubuntu-18.04
+    steps:
+    - name: checkout action branch
+      uses: actions/checkout@v2
+    - name: checkout NodeJS repository
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
+    - name: start installing packages
+      run: npm run install-packages
+
+  linter:
+    needs: packages-install
+    runs-on: ubuntu-18.04
+    steps: 
+    - name: checkout action branch
+      uses: actions/checkout@v2
+    - name: checkout NodeJS repository
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
+    - name: run linter
+      if: ${{ github.event_name != 'push' }}
+      run: |
+        npm run install-packages
+        npm run lint
+
