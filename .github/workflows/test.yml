@@ -27,5 +27,7 @@ jobs:
 
   linter:
     needs: packages-install
+    runs-on: ubuntu-18.04
+    steps: 
     - name: run linter
       run: npm run lint
