@@ -7,7 +7,7 @@ jobs:
   linter:
     runs-on: ubuntu-latest
     steps: 
-      - name: Run linter on this workflow
+    - name: Run linter on this workflow
       uses: action/checkout@v2
-      - name: running linter 
-      run: npm run lint
+    - name: running linter 
+    - run: npm run lint
