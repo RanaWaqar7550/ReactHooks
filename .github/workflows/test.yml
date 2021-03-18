@@ -6,7 +6,6 @@ on: push
 jobs: 
   linter:
     runs-on: ubuntu-latest
-# Steps
     steps: 
       - name: Run linter on this workflow
       uses: action/checkout@v2
