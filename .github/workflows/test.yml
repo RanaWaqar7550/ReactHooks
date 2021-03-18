@@ -27,9 +27,5 @@ jobs:
 
   linter:
     needs: packages-install
-    runs-on: ubuntu-18.04
-    steps: 
-    - name: checkout action branch
-      uses: actions/checkout@v2
     - name: run linter
       run: npm run lint
