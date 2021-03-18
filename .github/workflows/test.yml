@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - master
-      - waqar/practice1
+      - 'waqar/**'
 # Define Job 
 jobs: 
   linter:
