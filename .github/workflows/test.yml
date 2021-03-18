@@ -1,0 +1,13 @@
+# name of the workflow
+name: super linter
+# Define Event
+on: push
+# Define Job 
+job: 
+  linter:
+    - name: Run linter on this workflow
+    - uses: action/checkout@v2
+# Steps
+  steps: 
+      - name: running linter 
+      - run: npm run lint
