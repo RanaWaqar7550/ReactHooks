@@ -1,0 +1,20 @@
+# Event
+on: push
+# Jobs
+jobs:
+  run-linter:
+# runners / os
+    runs-on: ubuntu-18.04
+# steps
+    steps:
+    - name: use action checkout envoironment
+      uses: actions/checkout@v2
+    - name: use node
+      uses: actions/node@v1
+      with: 
+        node-version: '12.x'
+    - name: install packages 
+      run: npm run install-packages
+    - name: linter run
+      run: npm run lint
+      
