@@ -37,4 +37,7 @@ jobs:
         node-version: '12.x'
     - name: run linter
       if: ${{ github.event_name != 'push' }}
-      run: npm run lint
+      run: |
+        npm run install-packages
+        npm run lint
+
