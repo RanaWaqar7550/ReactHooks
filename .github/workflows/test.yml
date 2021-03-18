@@ -9,5 +9,7 @@ jobs:
     steps: 
     - name: checkout action branch
       uses: actions/checkout@v2
+    - name: install client server packages
+      run: npm install
     - name: run linter
       run: npm run lint
