@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-node@v1
       with: 
         node-version: '12.x'
-      run: npm run install-packages
+    - run: npm run install-packages
 
   linter:
     runs-on: ubuntu-18.04
