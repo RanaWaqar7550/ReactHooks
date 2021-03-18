@@ -1,0 +1,11 @@
+# Event
+on: push
+# jobs
+jobs: 
+# runers
+    runs-on: ubuntu-18.04
+# steps
+    steps:
+    - name: run linter
+      run: npm run lint
+      
