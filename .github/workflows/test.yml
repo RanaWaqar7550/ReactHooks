@@ -31,5 +31,10 @@ jobs:
     steps: 
     - name: checkout action branch
       uses: actions/checkout@v2
+    - name: checkout NodeJS repository
+      uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
     - name: run linter
+      if {{ github.event_name != 'push' }}
       run: npm run lint
