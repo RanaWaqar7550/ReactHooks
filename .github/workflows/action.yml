@@ -2,7 +2,7 @@
 on: push
 # Jobs
 jobs:
-  run-linter:
+  linter:
     # runner or env
     runs-on: ubuntu-18.04
     # steps
