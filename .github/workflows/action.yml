@@ -16,6 +16,7 @@ jobs:
     - name: run unit tests
       run: npm run test
   linter:
+    needs: unit-test
     # runner or env
     runs-on: ubuntu-18.04
     # steps
