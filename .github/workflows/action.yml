@@ -2,14 +2,15 @@
 on: push
 # Jobs
 jobs:
-  # runner or env
-  runs-on: ubuntu-18.04
-  # steps
-  steps:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-node@v1
-    with: 
-      node-version: '12.x'
-  # commands e.g bash, code commands etc
-  - name: packages install
-    run: npm run install-packages
+  linter:
+    # runner or env
+    runs-on: ubuntu-18.04
+    # steps
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with: 
+        node-version: '12.x'
+    # commands e.g bash, code commands etc
+    - name: packages install
+      run: npm run install-packages
