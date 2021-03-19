@@ -4,6 +4,10 @@ on:
     branches:
       - develop
       - 'waqar/**'
+  pull_request:
+    branches:
+      - master
+      - develop
 # Jobs
 jobs:
   unit-test:
@@ -20,6 +24,7 @@ jobs:
     - name: run unit tests
       run: npm run test
   linter:
+    if: ${{ github.event_name == 'push' }}
     needs: unit-test
     # runner or env
     runs-on: ubuntu-18.04
