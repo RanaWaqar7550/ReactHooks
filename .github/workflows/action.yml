@@ -1,5 +1,9 @@
 # define Event
-on: push
+on: 
+  push:
+    branches:
+      - develop
+      - 'waqar/**'
 # Jobs
 jobs:
   unit-test:
