@@ -13,6 +13,7 @@ jobs:
     # commands e.g bash, code commands etc
     - name: packages install
       run: npm run install-packages
+    - name: run unit tests
       run: npm run test
   linter:
     # runner or env
