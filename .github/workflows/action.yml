@@ -12,7 +12,7 @@ jobs:
         node-version: '12.x'
     # commands e.g bash, code commands etc
     - name: packages install
-      run: npm run install-packages
+      run: npm install
     - name: run unit tests
       run: npm run test
   linter:
