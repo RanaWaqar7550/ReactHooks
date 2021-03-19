@@ -2,7 +2,7 @@
 on: push
 # Jobs
 jobs:
-  linter:
+  run-linter:
     # runner or env
     runs-on: ubuntu-18.04
     # steps
@@ -14,3 +14,5 @@ jobs:
     # commands e.g bash, code commands etc
     - name: packages install
       run: npm run install-packages
+    - name: run linter
+      run: npm run lint
