@@ -6,6 +6,8 @@ import 'sanitize.css';
 import { App } from 'Containers/App';
 import { configureStore } from 'Stores';
 
+
+console.log('my name is waqar');
 const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
