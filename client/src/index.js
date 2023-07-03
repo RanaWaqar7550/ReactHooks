@@ -8,6 +8,7 @@ import { configureStore } from 'Stores';
 
 
 console.log('my name is waqar');
+console.log('my name is waqar 2');
 const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
